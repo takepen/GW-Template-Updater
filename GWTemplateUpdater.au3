@@ -13,14 +13,25 @@
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
 
+#Region Constants
 Global $sFilePath = "Templates.zip"
 
 Global $aTitle = "GW Template Updater"
 
 Global $aVersion = "1.0"
+#EndRegion
 
-Global $AttentionMsgBox = MsgBox(4, "Attention", "Did you safe your current template files?")
-	If $AttentionMsgBox = 7 Then
+
+If @ScriptDir <> "C:\Users\" & @UserName & "\Documents\GUILD WARS" Then
+	Global $ScriptDirMsgBox = MsgBox(4, "Attention", "This Script is not in C:\Users\%UserName%\Documents\GUILD WARS." & @CRLF & @CRLF & " Are you sure you want to continue?")
+	If $ScriptDirMsgBox = 7 Then
+		Exit
+	EndIf
+EndIf
+
+
+Global $SafeMsgBox = MsgBox(4, "Attention", "Did you safe your current template files?")
+	If $SafeMsgBox = 7 Then
 		ShellExecute("C:\Users\" & @UserName & "\Documents\GUILD WARS\Templates")
 		Exit
 	EndIf

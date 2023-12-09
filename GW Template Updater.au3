@@ -13,7 +13,7 @@
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
 
-Global $sFilePath = "Templates_by_Taki.zip"
+Global $sFilePath = "Templates.zip"
 
 Global $aTitle = "GW Template Updater"
 
@@ -33,7 +33,7 @@ ProgressSet(0, "Downloading Files...")
 
 ProgressSet(20, "Unzip Files...")
 
-_Zip_UnzipAll(@ScriptDir & "\Templates_by_Taki.zip", @ScriptDir & "\TEMP\Templates - TEMP\",1); Before I had _Zip_Unzip. This is the Temp Folder
+_Zip_UnzipAll(@ScriptDir & "\Templates.zip", @ScriptDir & "\TEMP\Templates - TEMP\",1); Before I had _Zip_Unzip. This is the Temp Folder
 
 
 local $patchfiles
@@ -81,7 +81,7 @@ Next
 ProgressSet(80, "Deleting demporary files...")
 
 
-FileDelete("Templates_by_Taki.zip")
+FileDelete("Templates.zip")
 DirRemove("TEMP",1)
 
 

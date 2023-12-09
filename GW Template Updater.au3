@@ -19,11 +19,17 @@ Global $aTitle = "GW Template Updater"
 
 Global $aVersion = "1.0"
 
-Global $hDownload = InetGet ("https://www.dropbox.com/scl/fo/b6yce5ukdnuboe3fyfjbn/h?rlkey=zxqirzjh1xk8s3lbai5piaw50&dl=1", $sFilePath, $INET_FORCERELOAD, $INET_DOWNLOADBACKGROUND)
+Global $AttentionMsgBox = MsgBox(4, "Attention", "Did you safe your current template files?")
+	If $AttentionMsgBox = 7 Then
+		ShellExecute("C:\Users\" & @UserName & "\Documents\GUILD WARS\Templates")
+		Exit
+	EndIf
 
 ProgressOn($aTitle & " " & $aVersion, "Updateing your templates")
 
 ProgressSet(0, "Downloading Files...")
+
+Global $hDownload = InetGet ("https://www.dropbox.com/scl/fo/b6yce5ukdnuboe3fyfjbn/h?rlkey=zxqirzjh1xk8s3lbai5piaw50&dl=1", $sFilePath, $INET_FORCERELOAD, $INET_DOWNLOADBACKGROUND)
 
     Do
         Sleep(250)
@@ -33,7 +39,7 @@ ProgressSet(0, "Downloading Files...")
 
 ProgressSet(20, "Unzip Files...")
 
-_Zip_UnzipAll(@ScriptDir & "\Templates.zip", @ScriptDir & "\TEMP\Templates - TEMP\",1); Before I had _Zip_Unzip. This is the Temp Folder
+_Zip_UnzipAll(@ScriptDir & "\Templates.zip", @ScriptDir & "\TEMP\Templates - TEMP\",1)
 
 
 local $patchfiles
